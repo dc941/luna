@@ -10,5 +10,6 @@ import java.util.List;
  */
 public interface weatherFileRepository extends CrudRepository<WeatherFile, Long> {
 
+    //TODO: check if this works that way and improve generated queries for next feature
     List<WeatherFile> findBySysCountry(String SysCountry);
 }

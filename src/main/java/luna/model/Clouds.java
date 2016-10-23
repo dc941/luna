@@ -1,10 +1,10 @@
 package luna.model;
 
-import org.springframework.data.annotation.Id;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -13,6 +13,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 public class Clouds {
+
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;

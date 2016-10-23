@@ -1,7 +1,6 @@
 package luna.model;
 
-import org.springframework.data.annotation.Id;
-
+import javax.persistence.Id;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -97,5 +96,19 @@ public class WeatherFile {
 
     public void setSys(Sys Sys) {
         this.Sys = Sys;
+    }
+
+    @Override
+    public String toString() {
+        return "WeatherFile{" +
+                "id=" + id +
+                ", Coord=" + Coord +
+                ", Weather=" + Weather +
+                ", Main=" + Main +
+                ", Wind=" + Wind +
+                ", Clouds=" + Clouds +
+                ", dt=" + dt +
+                ", Sys=" + Sys +
+                '}';
     }
 }

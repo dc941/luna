@@ -28,6 +28,11 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc6</artifactId>
+            <version>11.2</version>
+        </dependency>
     </dependencies>
 
 
@@ -43,7 +48,7 @@
                 <version>0.4.11</version>
                 <configuration>
                     <imageName>luna/${project.artifactId}</imageName>
-                    <dockerDirectory>src/main/docker</dockerDirectory>
+                    <dockerDirectory>src/Main/docker</dockerDirectory>
                     <resources>
                         <resource>
                             <targetPath>/</targetPath>

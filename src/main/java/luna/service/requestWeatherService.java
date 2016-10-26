@@ -17,18 +17,22 @@ public class requestWeatherService {
 
     private static final Logger log = LoggerFactory.getLogger(requestWeatherService.class);
 
+    private buildURLService buildURLService;
     private weatherFileRepository weatherFileRepository;
     private RestTemplate restTemplate;
 
     @Autowired
-    public requestWeatherService(weatherFileRepository weatherFileRepository,
+    public requestWeatherService(buildURLService buildURLService,
+                                 weatherFileRepository weatherFileRepository,
                                  RestTemplate restTemplate){
+        this.buildURLService = buildURLService;
         this.weatherFileRepository = weatherFileRepository;
         this.restTemplate = restTemplate;
     }
 
-    public void test(){
-        WeatherFile result = restTemplate.getForObject("http://api.openweathermap.org/data/2.5/weather?q=ThunderBay,ca&appid=8464a6eb7d04914c422e48c412eff921", WeatherFile.class);
+    public WeatherFile requestWeatherData(String cityName, String countryCode){
+        WeatherFile result = restTemplate.getForObject(buildURLService.buildRequestURL(cityName,countryCode), WeatherFile.class);
         log.info(result.toString());
+        return result;
     }
 }

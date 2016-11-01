@@ -1,5 +1,7 @@
 package luna.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.Id;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +13,7 @@ import javax.validation.constraints.NotNull;
  */
 
 @Entity
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class Sys {
 
     @Id
@@ -26,8 +29,7 @@ public class Sys {
     @NotNull
     private Long sunset;
 
-    public Sys(Long id, String country, Long sunrise, Long sunset) {
-        this.id = id;
+    public Sys(String country, Long sunrise, Long sunset) {
         this.country = country;
         this.sunrise = sunrise;
         this.sunset = sunset;
@@ -59,5 +61,15 @@ public class Sys {
 
     public void setSunset(Long sunset) {
         this.sunset = sunset;
+    }
+
+    @Override
+    public String toString() {
+        return "Sys{" +
+                "id=" + id +
+                ", country='" + country + '\'' +
+                ", sunrise=" + sunrise +
+                ", sunset=" + sunset +
+                '}';
     }
 }

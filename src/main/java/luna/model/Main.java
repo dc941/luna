@@ -1,5 +1,7 @@
 package luna.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.Id;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +13,7 @@ import javax.validation.constraints.NotNull;
  */
 
 @Entity
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class Main {
 
     @Id
@@ -29,8 +32,7 @@ public class Main {
     @NotNull
     private Integer humidity;
 
-    public Main(Long id, Double temp, Double pressure, Integer humidity) {
-        this.id = id;
+    public Main(Double temp, Double pressure, Integer humidity) {
         this.temp = temp;
         this.pressure = pressure;
         this.humidity = humidity;
@@ -62,5 +64,15 @@ public class Main {
 
     public void setHumidity(Integer humidity) {
         this.humidity = humidity;
+    }
+
+    @Override
+    public String toString() {
+        return "Main{" +
+                "id=" + id +
+                ", temp=" + temp +
+                ", pressure=" + pressure +
+                ", humidity=" + humidity +
+                '}';
     }
 }

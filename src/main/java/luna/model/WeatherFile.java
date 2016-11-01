@@ -1,31 +1,46 @@
 package luna.model;
 
-import javax.persistence.Id;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
 
 /**
  * Created by pwluft on 2016-10-23.
  */
 
 @Entity
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class WeatherFile {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
+    @OneToOne
     private Coord Coord;
+
+    @OneToOne
     private Weather Weather;
+
+    @OneToOne
     private Main Main;
+
+    @OneToOne
     private Wind Wind;
+
+    @OneToOne
     private Clouds Clouds;
-    //time of calculation in unix time
-    private Long dt;
+
+    @OneToOne
     private Sys Sys;
 
-    public WeatherFile(Long id, luna.model.Coord coord, luna.model.Weather weather,
+    //time of calculation in unix time
+    private Long dt;
+
+    public WeatherFile() {
+    }
+
+    public WeatherFile(long id, luna.model.Coord coord, luna.model.Weather weather,
                        luna.model.Main main, Wind wind, luna.model.Clouds clouds,
                        Long dt, luna.model.Sys sys) {
         this.id = id;

@@ -1,6 +1,8 @@
 package luna.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +14,7 @@ import javax.validation.constraints.NotNull;
  */
 
 @Entity
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class Clouds {
 
     @Id
@@ -22,8 +25,7 @@ public class Clouds {
     @NotNull
     private Integer all;
 
-    public Clouds(Long id, Integer all) {
-        this.id = id;
+    public Clouds(Integer all) {
         this.all = all;
     }
 
@@ -37,5 +39,13 @@ public class Clouds {
 
     public void setAll(Integer all) {
         this.all = all;
+    }
+
+    @Override
+    public String toString() {
+        return "Clouds{" +
+                "id=" + id +
+                ", all=" + all +
+                '}';
     }
 }

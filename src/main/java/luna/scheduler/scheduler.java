@@ -32,8 +32,9 @@ public class scheduler {
     @Scheduled(initialDelay = 100, fixedRate = 360000)
     public void getWeatherData(){
 
+        log.info(service.requestWeatherData("ThunderBay","ca").toString());
         //TODO: add for/each loop & service call for every polled city
-        weatherFileRepository.save(service.requestWeatherData("ThunderBay","ca"));
+        //weatherFileRepository.save(service.requestWeatherData("ThunderBay","ca"));
     }
 
 }

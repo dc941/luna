@@ -1,5 +1,7 @@
 package luna.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.Id;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +13,7 @@ import javax.validation.constraints.NotNull;
  */
 
 @Entity
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class Wind {
 
     @Id
@@ -25,8 +28,7 @@ public class Wind {
     @NotNull
     private Double deg;
 
-    public Wind(Long id, Double speed, Double deg) {
-        this.id = id;
+    public Wind(Double speed, Double deg) {
         this.speed = speed;
         this.deg = deg;
     }
@@ -49,5 +51,14 @@ public class Wind {
 
     public void setDeg(Double deg) {
         this.deg = deg;
+    }
+
+    @Override
+    public String toString() {
+        return "Wind{" +
+                "id=" + id +
+                ", speed=" + speed +
+                ", deg=" + deg +
+                '}';
     }
 }

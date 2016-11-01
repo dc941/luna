@@ -1,5 +1,6 @@
 package luna.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import luna.model.WeatherFile;
 import luna.repository.weatherFileRepository;
 import org.slf4j.Logger;
@@ -20,17 +21,19 @@ public class requestWeatherService {
     private buildURLService buildURLService;
     private weatherFileRepository weatherFileRepository;
     private RestTemplate restTemplate;
+    private ObjectMapper objectMapper;
 
     @Autowired
     public requestWeatherService(buildURLService buildURLService,
                                  weatherFileRepository weatherFileRepository,
-                                 RestTemplate restTemplate){
+                                 ObjectMapper objectMapper){
         this.buildURLService = buildURLService;
         this.weatherFileRepository = weatherFileRepository;
-        this.restTemplate = restTemplate;
+        this.restTemplate = new RestTemplate();
     }
 
     public WeatherFile requestWeatherData(String cityName, String countryCode){
+        log.info("request returns:" + restTemplate.getForObject(buildURLService.buildRequestURL(cityName,countryCode), String.class));
         WeatherFile result = restTemplate.getForObject(buildURLService.buildRequestURL(cityName,countryCode), WeatherFile.class);
         log.info(result.toString());
         return result;

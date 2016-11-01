@@ -1,5 +1,7 @@
 package luna.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.Id;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +13,7 @@ import javax.validation.constraints.NotNull;
  */
 
 @Entity
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class Coord {
 
     @Id
@@ -23,8 +26,10 @@ public class Coord {
     @NotNull
     private Double lat;
 
-    public Coord(Long id, Double lon, Double lat) {
-        this.id = id;
+    public Coord() {
+    }
+
+    public Coord(Double lon, Double lat) {
         this.lon = lon;
         this.lat = lat;
     }
@@ -47,5 +52,14 @@ public class Coord {
 
     public void setLat(Double lat) {
         this.lat = lat;
+    }
+
+    @Override
+    public String toString() {
+        return "Coord{" +
+                "id=" + id +
+                ", lon=" + lon +
+                ", lat=" + lat +
+                '}';
     }
 }

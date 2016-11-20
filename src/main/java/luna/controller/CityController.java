@@ -15,6 +15,7 @@ import java.util.ArrayList;
 @RequestMapping("/city")
 public class CityController {
 
+    /*
     @RequestMapping(path = "/polled", method = RequestMethod.GET)
     public ArrayList<City> getPolledCities() {
         //TODO
@@ -29,5 +30,11 @@ public class CityController {
     public String deleteCity(@PathVariable long id){
         //TODO
     }
+
+    @RequestMapping(path = "/getTest", method = RequestMethod.GET)
+    public City getTest() {
+        //TODO
+    }
+    */
 
 }

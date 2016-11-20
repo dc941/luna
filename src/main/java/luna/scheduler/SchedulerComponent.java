@@ -1,7 +1,7 @@
 package luna.scheduler;
 
-import luna.repository.weatherFileRepository;
-import luna.service.requestWeatherService;
+import luna.repository.WeatherFileRepository;
+import luna.service.RequestWeatherService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,19 +13,19 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-public class scheduler {
+public class SchedulerComponent {
 
-    private static final Logger log = LoggerFactory.getLogger(scheduler.class);
+    private static final Logger log = LoggerFactory.getLogger(SchedulerComponent.class);
 
 
-    private requestWeatherService service;
-    private weatherFileRepository weatherFileRepository;
+    private RequestWeatherService service;
+    private WeatherFileRepository WeatherFileRepository;
 
     @Autowired
-    public scheduler(requestWeatherService service,
-                     weatherFileRepository weatherFileRepository){
+    public SchedulerComponent(RequestWeatherService service,
+                              WeatherFileRepository WeatherFileRepository){
         this.service = service;
-        this.weatherFileRepository = weatherFileRepository;
+        this.WeatherFileRepository = WeatherFileRepository;
         log.info("scheduler instantiated.");
     }
 
@@ -34,7 +34,8 @@ public class scheduler {
 
         log.info(service.requestWeatherData("ThunderBay","ca").toString());
         //TODO: add for/each loop & service call for every polled city
-        //weatherFileRepository.save(service.requestWeatherData("ThunderBay","ca"));
+        //TODO: get Strings from requestWeatherService
+        //TODO: parse results and persist them
     }
 
 }

@@ -13,9 +13,10 @@ import java.util.Date;
  * Created by DC on 2016-11-14.
  */
 @Controller
-@RequestMapping("/api/weatherfile")
+@RequestMapping("/weatherfile")
 public class WeatherFileController {
 
+    /*
     @RequestMapping(path = "/getByDate", method = RequestMethod.GET)
     public WeatherFile getByDate(@RequestParam Date date){
         //TODO
@@ -25,4 +26,12 @@ public class WeatherFileController {
     public ArrayList<WeatherFile> getBetweenDates(@RequestParam Date date1, @RequestParam Date date2) {
         //TODO
     }
+
+    @RequestMapping(path = "/getTest", method = RequestMethod.GET)
+    public WeatherFile getTest(){
+        //TODO
+    }
+    */
 }
+
+

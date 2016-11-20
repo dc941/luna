@@ -11,9 +11,9 @@ import org.springframework.util.StringUtils;
  */
 
 @Component
-public class buildURLService {
+public class BuildURLService {
 
-    private static final Logger log = LoggerFactory.getLogger(buildURLService.class);
+    private static final Logger log = LoggerFactory.getLogger(BuildURLService.class);
 
     @Value("${luna.openweatheruri}")
     private String baseUri;

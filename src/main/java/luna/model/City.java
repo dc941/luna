@@ -1,9 +1,6 @@
 package luna.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -18,14 +15,18 @@ public class City {
     private Long id;
 
     @NotNull
+    @Column(name = "NAME")
     private String name;
 
+    @Column(name = "COUNTRYCODE")
     private String countryCode;
 
     public City(String name, String countryCode) {
         this.name = name;
         this.countryCode = countryCode;
     }
+
+    public City(){};
 
     public Long getId() {
         return id;

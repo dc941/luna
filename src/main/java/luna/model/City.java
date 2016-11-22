@@ -23,9 +23,13 @@ public class City {
     @Column(name = "COUNTRYCODE")
     private String countryCode;
 
-    public City(String name, String countryCode) {
+    @Column(name = "ACTIVE")
+    private String active;
+
+    public City(String name, String countryCode, String active) {
         this.name = name;
         this.countryCode = countryCode;
+        this.active = active;
     }
 
     public City(){};
@@ -37,6 +41,8 @@ public class City {
     public String getName() {
         return name;
     }
+
+    public String getActive() { return active; }
 
     public void setName(String name) {
         this.name = name;
@@ -50,12 +56,15 @@ public class City {
         this.countryCode = countryCode;
     }
 
+    public void setActive(String active) { this.active = active; }
+
     @Override
     public String toString() {
         return "City{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", countryCode='" + countryCode + '\'' +
+                ", active='" + active + '\'' +
                 '}';
     }
 }

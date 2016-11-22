@@ -16,15 +16,19 @@ public class Sys {
     @Id
     @GeneratedValue(generator="SysSeq")
     @SequenceGenerator(name="SysSeq",sequenceName="SYS_SEQ", allocationSize=1)
+    @Column(name = "ID")
     private Long id;
 
     @NotNull
+    @Column(name = "COUNTRY")
     private String country;
 
     @NotNull
+    @Column(name = "SUNRISE")
     private Long sunrise;
 
     @NotNull
+    @Column(name = "SUNSET")
     private Long sunset;
 
     public Sys(String country, Long sunrise, Long sunset) {

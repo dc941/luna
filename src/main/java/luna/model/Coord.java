@@ -16,12 +16,15 @@ public class Coord {
     @Id
     @GeneratedValue(generator="CoordSeq")
     @SequenceGenerator(name="CoordSeq",sequenceName="COORD_SEQ", allocationSize=1)
+    @Column(name = "ID")
     private Long id;
 
     @NotNull
+    @Column(name = "LON")
     private Double lon;
 
     @NotNull
+    @Column(name = "LAT")
     private Double lat;
 
     public Coord() {

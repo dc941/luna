@@ -22,6 +22,7 @@ public class Clouds {
 
     //Cloudiness in %
     @NotNull
+    @Column(name = "ALL")
     private Integer all;
 
     public Clouds(Integer all) {

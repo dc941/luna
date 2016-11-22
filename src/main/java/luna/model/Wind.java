@@ -16,14 +16,17 @@ public class Wind {
     @Id
     @GeneratedValue(generator="WindSeq")
     @SequenceGenerator(name="WindSeq",sequenceName="WIND_SEQ", allocationSize=1)
+    @Column(name = "ID")
     private Long id;
 
     //wind speed in meters per second
     @NotNull
+    @Column(name = "SPEED")
     private Double speed;
 
     //metereological direction
     @NotNull
+    @Column(name = "DEG")
     private Double deg;
 
     public Wind(Double speed, Double deg) {

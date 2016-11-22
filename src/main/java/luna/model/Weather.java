@@ -15,9 +15,13 @@ public class Weather {
     @Id
     @GeneratedValue(generator="WeatherSeq")
     @SequenceGenerator(name="WeatherSeq",sequenceName="WEATHER_SEQ", allocationSize=1)
+    @Column(name = "ID")
     private Long id;
 
+    @Column(name = "MAIN")
     private String main;
+
+    @Column(name = "DESCRIPTION")
     private String description;
 
     public Weather(String main, String description) {

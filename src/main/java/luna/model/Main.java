@@ -16,18 +16,22 @@ public class Main {
     @Id
     @GeneratedValue(generator="MainSeq")
     @SequenceGenerator(name="MainSeq",sequenceName="MAIN_SEQ", allocationSize=1)
+    @Column(name = "ID")
     private Long id;
 
     //temp is in Kelvin
     @NotNull
+    @Column(name = "TEMP")
     private Double temp;
 
     //pressure is in hPa
     @NotNull
+    @Column(name = "PRESSURE")
     private Double pressure;
 
     //humidity is in percent
     @NotNull
+    @Column(name = "HUMIDITY")
     private Integer humidity;
 
     public Main(Double temp, Double pressure, Integer humidity) {

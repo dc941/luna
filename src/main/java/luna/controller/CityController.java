@@ -47,7 +47,7 @@ public class CityController {
     public @ResponseBody City getTest() {
 
         City result = cityRepository.findOne(Long.valueOf(21));
-        log.info("getTest returns: " + result.toString());
+        log.info("getTest-endpoint returns: " + result.toString());
         return result;
     }
 

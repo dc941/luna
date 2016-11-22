@@ -22,12 +22,14 @@ public class Clouds {
 
     //Cloudiness in %
     @NotNull
-    @Column(name = "ALL")
+    @Column(name = "ALL_V")
     private Integer all;
 
     public Clouds(Integer all) {
         this.all = all;
     }
+
+    public Clouds() {}
 
     public Long getId() {
         return id;

@@ -9,7 +9,7 @@ import javax.persistence.*;
  */
 
 @Entity
-@JsonIgnoreProperties(ignoreUnknown=true)
+@Table(name = "WEATHERFILE")
 public class WeatherFile {
 
     @Id
@@ -19,27 +19,27 @@ public class WeatherFile {
     private Long id;
 
     @OneToOne
-    @Column(name = "COORD_ID")
+    @JoinColumn (name = "COORD_ID")
     private Coord Coord;
 
     @OneToOne
-    @Column(name = "WEATHER_ID")
+    @JoinColumn (name = "WEATHER_ID")
     private Weather Weather;
 
     @OneToOne
-    @Column(name = "MAIN_ID")
+    @JoinColumn (name = "MAIN_ID")
     private Main Main;
 
     @OneToOne
-    @Column(name = "WIND_ID")
+    @JoinColumn (name = "WIND_ID")
     private Wind Wind;
 
     @OneToOne
-    @Column(name = "CLOUDS_ID")
+    @JoinColumn (name = "CLOUDS_ID")
     private Clouds Clouds;
 
     @OneToOne
-    @Column(name = "SYS_ID")
+    @JoinColumn (name = "SYS_ID")
     private Sys Sys;
 
     //time of calculation in unix time
@@ -47,7 +47,7 @@ public class WeatherFile {
     private Long dt;
 
     @OneToOne
-    @Column(name = "CITY_ID")
+    @JoinColumn (name = "CITY_ID")
     private City City;
 
     public WeatherFile() {

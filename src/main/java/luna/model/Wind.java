@@ -34,6 +34,9 @@ public class Wind {
         this.deg = deg;
     }
 
+    public Wind() {
+    }
+
     public Long getId() {
         return id;
     }

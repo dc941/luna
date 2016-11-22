@@ -29,6 +29,9 @@ public class Weather {
         this.description = description;
     }
 
+    public Weather() {
+    }
+
     public Long getId() {
         return id;
     }

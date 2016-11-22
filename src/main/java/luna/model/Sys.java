@@ -37,6 +37,9 @@ public class Sys {
         this.sunset = sunset;
     }
 
+    public Sys() {
+    }
+
     public Long getId() {
         return id;
     }

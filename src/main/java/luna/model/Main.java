@@ -40,6 +40,9 @@ public class Main {
         this.humidity = humidity;
     }
 
+    public Main() {
+    }
+
     public Long getId() {
         return id;
     }

@@ -2,10 +2,7 @@ package luna.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import javax.persistence.Id;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
 
 /**
  * Created by pwluft on 2016-10-23.
@@ -16,7 +13,8 @@ import javax.persistence.GenerationType;
 public class Weather {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(generator="WeatherSeq")
+    @SequenceGenerator(name="WeatherSeq",sequenceName="WEATHER_SEQ", allocationSize=1)
     private Long id;
 
     private String main;

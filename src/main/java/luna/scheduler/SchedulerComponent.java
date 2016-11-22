@@ -29,7 +29,7 @@ public class SchedulerComponent {
         log.info("scheduler instantiated.");
     }
 
-    @Scheduled(initialDelay = 100, fixedRate = 360000)
+    @Scheduled(cron = "0 12 * * *")
     public void getWeatherData(){
 
         log.info(service.requestWeatherData("ThunderBay","ca").toString());

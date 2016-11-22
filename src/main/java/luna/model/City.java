@@ -11,7 +11,9 @@ import javax.validation.constraints.NotNull;
 public class City {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(generator="CitySeq")
+    @SequenceGenerator(name="CitySeq",sequenceName="CITY_SEQ", allocationSize=1)
+    @Column(name = "ID")
     private Long id;
 
     @NotNull

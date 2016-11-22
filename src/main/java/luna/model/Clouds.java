@@ -3,10 +3,7 @@ package luna.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -18,7 +15,9 @@ import javax.validation.constraints.NotNull;
 public class Clouds {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(generator="CloudsSeq")
+    @SequenceGenerator(name="CloudsSeq",sequenceName="CLOUDS_SEQ", allocationSize=1)
+    @Column(name = "ID")
     private Long id;
 
     //Cloudiness in %

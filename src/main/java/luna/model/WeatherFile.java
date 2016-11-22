@@ -13,7 +13,8 @@ import javax.persistence.*;
 public class WeatherFile {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(generator="WeatherfileSeq")
+    @SequenceGenerator(name="WeatherfileSeq",sequenceName="WEATHERFILE_SEQ", allocationSize=1)
     private Long id;
 
     @OneToOne

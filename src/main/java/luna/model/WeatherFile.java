@@ -53,10 +53,9 @@ public class WeatherFile {
     public WeatherFile() {
     }
 
-    public WeatherFile(long id, luna.model.Coord coord, luna.model.Weather weather,
+    public WeatherFile(luna.model.Coord coord, luna.model.Weather weather,
                        luna.model.Main main, Wind wind, luna.model.Clouds clouds,
                        Long dt, luna.model.Sys sys, luna.model.City city) {
-        this.id = id;
         this.Coord = coord;
         this.Weather = weather;
         this.Main = main;

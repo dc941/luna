@@ -1,6 +1,7 @@
 package luna.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import luna.model.City;
 import luna.model.WeatherFile;
 import luna.repository.WeatherFileRepository;
 import org.slf4j.Logger;
@@ -30,10 +31,10 @@ public class RequestWeatherService {
     }
 
     //Requests information from OpenWeatherAPI and returns answer as String
-    public String requestWeatherData(String cityName, String countryCode){
+    public String requestWeatherData(City city){
 
-        String result = restTemplate.getForObject(BuildURLService.buildRequestURL(cityName,countryCode), String.class);
-        log.info("Request to API for "+ cityName + ", " + countryCode + " returns:" + result);
+        String result = restTemplate.getForObject(BuildURLService.buildRequestURL(city), String.class);
+        log.info("Request to API for "+ city.getName() + ", " + city.getCountryCode() + " returns:" + result);
         return result;
     }
 }

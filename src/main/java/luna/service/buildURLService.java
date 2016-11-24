@@ -1,5 +1,6 @@
 package luna.service;
 
+import luna.model.City;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,14 +23,14 @@ public class BuildURLService {
     private String apiKey;
 
     //TODO: implement saved cities, then clean up this method
-    public String buildRequestURL(String cityName, String countryCode){
+    public String buildRequestURL(City city){
 
         String result;
 
-        if(StringUtils.isEmpty(StringUtils.trimAllWhitespace(countryCode))){
-            result = baseUri + "?q=" + cityName + "&appid=" + apiKey;
+        if(StringUtils.isEmpty(StringUtils.trimAllWhitespace(city.getCountryCode()))){
+            result = baseUri + "?q=" + city.getName() + "&appid=" + apiKey;
         } else {
-            result = baseUri + "?q=" + cityName + "," + countryCode + "&appid=" + apiKey;
+            result = baseUri + "?q=" + city.getName() + "," + city.getCountryCode() + "&appid=" + apiKey;
         }
 
         log.debug("returning URL " + result);

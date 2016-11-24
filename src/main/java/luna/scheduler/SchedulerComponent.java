@@ -1,6 +1,9 @@
 package luna.scheduler;
 
+import luna.model.City;
+import luna.repository.CityRepository;
 import luna.repository.WeatherFileRepository;
+import luna.service.ParsingService;
 import luna.service.RequestWeatherService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,24 +21,37 @@ public class SchedulerComponent {
     private static final Logger log = LoggerFactory.getLogger(SchedulerComponent.class);
 
 
-    private RequestWeatherService service;
-    private WeatherFileRepository WeatherFileRepository;
+    private RequestWeatherService requestWeatherService;
+    private ParsingService parsingService;
+    private WeatherFileRepository weatherFileRepository;
+    private CityRepository cityRepository;
 
     @Autowired
-    public SchedulerComponent(RequestWeatherService service,
-                              WeatherFileRepository WeatherFileRepository){
-        this.service = service;
-        this.WeatherFileRepository = WeatherFileRepository;
+    public SchedulerComponent(RequestWeatherService requestWeatherService,
+                              ParsingService parsingService,
+                              WeatherFileRepository WeatherFileRepository,
+                              CityRepository cityRepository){
+        this.requestWeatherService = requestWeatherService;
+        this.parsingService = parsingService;
+        this.weatherFileRepository = WeatherFileRepository;
+        this.cityRepository = cityRepository;
         log.info("scheduler instantiated.");
     }
 
-    @Scheduled(cron = "0 12 * * * *")
+    //@Scheduled(cron = "0 12 * * * *")
+    @Scheduled(initialDelay = 10, fixedDelay = 10000000)
     public void getWeatherData(){
 
-        log.info(service.requestWeatherData("ThunderBay","ca").toString());
-        //TODO: add for/each loop & service call for every polled city
-        //TODO: get Strings from requestWeatherService
-        //TODO: parse results and persist them
+        //for each active city in the database
+        for(City city : cityRepository.findByActive("Y")){
+
+            //get current weather information from api
+            String apiResponse = requestWeatherService.requestWeatherData(city);
+            log.info("API response is: " + apiResponse + "for city: " + city);
+
+            //parse that information and persist it into the database
+            parsingService.persistFromString(apiResponse, city);
+        }
     }
 
 }

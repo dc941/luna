@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
 import java.util.Iterator;
 
 
@@ -76,7 +77,7 @@ public class ParsingService {
         windRepository.save(wind);
 
         //create full WeatherFile with all generated objects and information from the string and persist it
-        WeatherFile weatherFile = new WeatherFile(coord, weather, main, wind, clouds, jobject.get("dt").getAsLong(), sys, city);
+        WeatherFile weatherFile = new WeatherFile(coord, weather, main, wind, clouds, jobject.get("dt").getAsLong(), sys, city, new Date());
         weatherFileRepository.save(weatherFile);
     }
 }

@@ -50,12 +50,16 @@ public class WeatherFile {
     @JoinColumn (name = "CITY_ID")
     private City City;
 
+    @Column(name = "DATE_CREATED")
+    @Temporal(TemporalType.TIMESTAMP)
+    private java.util.Date date_created;
+
     public WeatherFile() {
     }
 
     public WeatherFile(luna.model.Coord coord, luna.model.Weather weather,
                        luna.model.Main main, Wind wind, luna.model.Clouds clouds,
-                       Long dt, luna.model.Sys sys, luna.model.City city) {
+                       Long dt, luna.model.Sys sys, luna.model.City city, java.util.Date date_created) {
         this.Coord = coord;
         this.Weather = weather;
         this.Main = main;
@@ -64,6 +68,7 @@ public class WeatherFile {
         this.dt = dt;
         this.Sys = sys;
         this.City = city;
+        this.date_created = date_created;
     }
 
     public Long getId() {
@@ -141,6 +146,8 @@ public class WeatherFile {
                 ", Clouds=" + Clouds +
                 ", dt=" + dt +
                 ", Sys=" + Sys +
+                ", City=" + City +
+                ", date_created=" + date_created +
                 '}';
     }
 }

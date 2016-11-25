@@ -2,7 +2,6 @@ package luna.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import luna.model.City;
-import luna.model.WeatherFile;
 import luna.repository.WeatherFileRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

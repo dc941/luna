@@ -49,15 +49,15 @@ public class WeatherFile {
     private City City;
 
     @Column(name = "DATE_CREATED")
-    @Temporal(TemporalType.TIMESTAMP)
-    private java.util.Date date_created;
+    @Temporal(TemporalType.DATE)
+    private java.util.Date dateCreated;
 
     public WeatherFile() {
     }
 
     public WeatherFile(luna.model.Coord coord, luna.model.Weather weather,
                        luna.model.Main main, Wind wind, luna.model.Clouds clouds,
-                       Long dt, luna.model.Sys sys, luna.model.City city, java.util.Date date_created) {
+                       Long dt, luna.model.Sys sys, luna.model.City city, java.util.Date dateCreated) {
         this.Coord = coord;
         this.Weather = weather;
         this.Main = main;
@@ -66,7 +66,7 @@ public class WeatherFile {
         this.dt = dt;
         this.Sys = sys;
         this.City = city;
-        this.date_created = date_created;
+        this.dateCreated = dateCreated;
     }
 
     public Long getId() {
@@ -133,6 +133,8 @@ public class WeatherFile {
 
     public void setCity(City city) { this.City = city;}
 
+    public java.util.Date getDateCreated() { return dateCreated;}
+
     @Override
     public String toString() {
         return "WeatherFile{" +
@@ -145,7 +147,7 @@ public class WeatherFile {
                 ", dt=" + dt +
                 ", Sys=" + Sys +
                 ", City=" + City +
-                ", date_created=" + date_created +
+                ", dateCreated=" + dateCreated +
                 '}';
     }
 }

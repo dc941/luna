@@ -38,7 +38,7 @@ public class SchedulerComponent {
         log.info("scheduler instantiated.");
     }
 
-    @Scheduled(cron = "0 12 * * * *")
+    @Scheduled(cron = "0 0 12 * * *")
     //@Scheduled(initialDelay = 10, fixedDelay = 10000000)
     public void getWeatherData(){
 
